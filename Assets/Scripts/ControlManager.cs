@@ -10,6 +10,7 @@ public class ControlManager : MonoBehaviour
 
 	bool left, right, up, down;
 	bool gamepadInput;
+	bool shooting = false;
 
 	public enum Control
 	{
@@ -42,8 +43,11 @@ public class ControlManager : MonoBehaviour
 
 		if (gamepad.rightTrigger.wasPressedThisFrame)
 		{
-			// TODO: full auto fire
 			player.Shoot();
+		}
+		else if (gamepad.rightTrigger.wasReleasedThisFrame)
+		{
+			player.StopShot();
 		}
 		if (gamepad.rightShoulder.wasPressedThisFrame)
 		{
@@ -64,6 +68,10 @@ public class ControlManager : MonoBehaviour
 		if (Mouse.current.leftButton.wasPressedThisFrame)
 		{
 			player.Shoot();
+		}
+		else if (Mouse.current.leftButton.wasReleasedThisFrame)
+		{
+			player.StopShot();
 		}
 		//if (Mouse.current.scroll.)
 		//{
