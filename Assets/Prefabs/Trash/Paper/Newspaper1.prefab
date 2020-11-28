@@ -69,6 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 209973003386433138, guid: bac8696829e3f0f4ba2a8c9e63b2c827,
         type: 3}
+      propertyPath: hardness
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 209973003386433138, guid: bac8696829e3f0f4ba2a8c9e63b2c827,
+        type: 3}
       propertyPath: trashName
       value: Paper
       objectReference: {fileID: 0}

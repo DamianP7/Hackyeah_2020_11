@@ -8,7 +8,9 @@ public class ControlManager : MonoBehaviour
 	public enum InputState
 	{
 		Game,
-		Loading
+		Loading,
+		Pause,
+		Menu
 	}
 
 	public CharacterController player;
@@ -40,19 +42,19 @@ public class ControlManager : MonoBehaviour
 			case InputState.Game:
 				if (controls == Control.Mobile)
 					return;
-				else if (Gamepad.current != null && controls == Control.Controller)
-					HandleGamepad();
+				//else if (Gamepad.current != null && controls == Control.Controller)
+				//	HandleGamepad();
 				else
 					HandlePC();
 
-				if (Mouse.current.rightButton.wasPressedThisFrame)
-				{
-					LoadingScreen.Instance.LoadScene("SampleScene");
-				}
 				break;
 			case InputState.Loading:
-				if (Keyboard.current.anyKey.wasPressedThisFrame)
+				if (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
 					LoadingScreen.Instance.OnClickContinue();
+				break;
+			case InputState.Pause:
+				if (Keyboard.current.escapeKey.wasPressedThisFrame)
+					PauseWindow.Instance.Close();
 				break;
 		}
 	}
@@ -116,6 +118,10 @@ public class ControlManager : MonoBehaviour
 		if (Keyboard.current.digit3Key.wasPressedThisFrame)
 		{
 			player.SetWeapon(2);
+		}
+		if(Keyboard.current.escapeKey.wasPressedThisFrame)
+		{
+			PauseWindow.Instance.Open();
 		}
 
 

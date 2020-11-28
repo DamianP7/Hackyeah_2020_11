@@ -86,6 +86,8 @@ public class CharacterController : MonoBehaviour
 		{
 			points = value;
 			LevelManager.Instance.points.text = points.ToString();
+
+			PlayerPrefs.SetInt("Coins", points);
 		}
 	}
 	[SerializeField] float speed = 1;

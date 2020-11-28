@@ -20,6 +20,8 @@ public class LoadingScreen : MonoBehaviour
 	public ControlManager controlManager;
 	public ControlManager.InputState nextInputState;
 
+	public CanvasGroup[] canvasGroupsToHide;
+
 	[Header("Internal Variables")]
 	public Animator animator;
 	public LoadingTips loadingTips;
@@ -39,9 +41,13 @@ public class LoadingScreen : MonoBehaviour
 
 	void Start()
 	{
+		controlManager.inputState = nextInputState;
 		tipText.text = loadingTips.GetRandomTip();
 		animator.SetTrigger("FadeOut");
-		controlManager.inputState = nextInputState;
+		for (int i = 0; i < canvasGroupsToHide.Length; i++)
+		{
+			canvasGroupsToHide[i].alpha = 1;
+		}
 	}
 
 	public void LoadScene(string name)
@@ -53,6 +59,11 @@ public class LoadingScreen : MonoBehaviour
 		animator.SetTrigger("FadeIn");
 		async = SceneManager.LoadSceneAsync(name);
 		async.allowSceneActivation = false;
+
+		for (int i = 0; i < canvasGroupsToHide.Length; i++)
+		{
+			canvasGroupsToHide[i].alpha = 0;
+		}
 
 		StartCoroutine(WaitForLoad());
 	}
