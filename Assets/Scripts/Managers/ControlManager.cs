@@ -87,7 +87,7 @@ public class ControlManager : MonoBehaviour
 
 	void HandlePC()
 	{
-		player.Aim(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()),true);
+		player.Aim(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), true);
 
 		if (Mouse.current.leftButton.wasPressedThisFrame)
 		{
@@ -105,7 +105,7 @@ public class ControlManager : MonoBehaviour
 		{
 			player.ChangeWeapon(-1);
 		}
-		if(Keyboard.current.digit1Key.wasPressedThisFrame)
+		if (Keyboard.current.digit1Key.wasPressedThisFrame)
 		{
 			player.SetWeapon(0);
 		}
@@ -149,7 +149,8 @@ public class ControlManager : MonoBehaviour
 		if (right)
 			direction.x += 1;
 
-		player.Move(direction);
+		if (direction != Vector2.zero)
+			player.Move(direction);
 	}
 
 

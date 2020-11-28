@@ -61,6 +61,7 @@ public class CharacterController : MonoBehaviour
 
 	[SerializeField] float timeToIdleAnimation;
 	float idleTimer;
+	string currentAnim = "";
 
 	[Header("Pointer")]
 	public LineRenderer lineRenderer;
@@ -139,21 +140,29 @@ public class CharacterController : MonoBehaviour
 
 	public void Move(Vector2 direction)
 	{
-		if(direction.x > 0)
+		Direction oldDirection = curDirection;
+		if (direction.x > 0)
 		{
 			if (curDirection != Direction.Right)
+			{
 				curDirection = Direction.Right;
+			}
 		}
 		else if (direction.x < 0)
 		{
 			if (curDirection != Direction.Left)
+			{
 				curDirection = Direction.Left;
+			}
+		}
+		if((!moved && currentAnim != "Walking") || oldDirection != curDirection)
+		{
+			animator.SetTrigger("Walking");
+			currentAnim = "Walking";
 		}
 
 		Vector3 pos = new Vector3(direction.x * speed, direction.y * speed) + rb.transform.position;
 		rb.MovePosition(pos);
-		if (!moved)
-			animator.SetTrigger("Walking");
 		moved = true;
 	}
 
@@ -208,7 +217,7 @@ public class CharacterController : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		if(moved)
+		if (moved)
 		{
 			idleTimer = 0;
 			moved = false;
@@ -217,7 +226,11 @@ public class CharacterController : MonoBehaviour
 		{
 			idleTimer += Time.deltaTime;
 			if (idleTimer > timeToIdleAnimation)
-				animator.SetTrigger("Idle");
+			{
+				if (currentAnim != "Idle")
+					animator.SetTrigger("Idle");
+				currentAnim = "Idle";
+			}
 		}
 	}
 }
