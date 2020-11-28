@@ -21,6 +21,7 @@ public class Trash : MonoBehaviour
 	public int points;
 
 	[Header("Trash stats")]
+	public string trashName;
 	public TrashType trashType;
 	public float minScale;
 	[Tooltip("By how many percent the beam power will be reduced")]
@@ -45,6 +46,7 @@ public class Trash : MonoBehaviour
 		if (beamType != trashType)
 		{
 			wrongHitTimer += Time.deltaTime;
+			LevelManager.Instance.WrongTypeShot(trashName, wrongHitTimer);
 			return;
 		}
 
@@ -73,6 +75,6 @@ public class Trash : MonoBehaviour
 	
 	public void GivePoints()
 	{
-		CharacterController.Player.points += points;
+		CharacterController.Player.Points += points;
 	}
 }

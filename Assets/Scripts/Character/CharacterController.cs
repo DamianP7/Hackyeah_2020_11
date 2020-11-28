@@ -15,6 +15,7 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
+
 	[Header("Pointer")]
 	public LineRenderer lineRenderer;
 	public Material lineMaterial;
@@ -30,7 +31,16 @@ public class CharacterController : MonoBehaviour
 	int gunIndex = 0;
 
 	[Header("Stats")]
-	public int points = 0;
+	private int points = 0;
+	public int Points
+	{
+		get => points;
+		set
+		{
+			points = value;
+			LevelManager.Instance.points.text = points.ToString();
+		}
+	}
 	[SerializeField] float speed = 1;
 
 
@@ -47,6 +57,7 @@ public class CharacterController : MonoBehaviour
 	private void Start()
 	{
 		lineRenderer.enabled = false;
+		Points = 0;
 	}
 
 	public void Aim(Vector2 direction, bool isMouse = false)
