@@ -4,19 +4,35 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+	private static CharacterController player;
+	public static CharacterController Player
+	{
+		get
+		{
+			if (player == null)
+				player = FindObjectOfType<CharacterController>();
+			return player;
+		}
+	}
+
+	[Header("Pointer")]
 	public LineRenderer lineRenderer;
 	public Material lineMaterial;
 	public Transform padPointer;
 	public Transform mousePointer;
 	public float maxPointerDistance;
 
+	[Header("Guns")]
 	public Gun[] guns;
 	public Gun selectedGun;
 	[HideInInspector]
 	public bool shooting = false;
 	int gunIndex = 0;
 
+	[Header("Stats")]
+	public int points = 0;
 	[SerializeField] float speed = 1;
+
 
 	int hp = 100;
 	Rigidbody2D rb;

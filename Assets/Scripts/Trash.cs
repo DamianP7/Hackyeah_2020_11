@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum TrashType
@@ -14,6 +15,10 @@ public class Trash : MonoBehaviour
 	//public Tooltip tooltip;
 	public Animator animator;
 	public Transform sprite;
+	public TextMeshProUGUI text;
+
+	[Space]
+	public int points;
 
 	[Header("Trash stats")]
 	public TrashType trashType;
@@ -29,6 +34,7 @@ public class Trash : MonoBehaviour
 	{
 		wrongHitTimer = 0;
 		hittable = true;
+		animator.enabled = false;
 	}
 
 	public void Hitted(TrashType beamType, float force)
@@ -43,8 +49,8 @@ public class Trash : MonoBehaviour
 		}
 
 		float totalForce = force * (1 - hardness) * Time.deltaTime;
-		Debug.Log(totalForce);
-		sprite.localScale *= 1 - totalForce;
+
+		sprite.localScale *= (1 - totalForce);
 
 		if (sprite.localScale.x < minScale)
 			Destroyed();
@@ -52,9 +58,21 @@ public class Trash : MonoBehaviour
 
 	public void Destroyed()
 	{
+		animator.enabled = true;
+		text.text = "+" + points;
 		hittable = false;
-		//animator
+		animator.SetTrigger("Destroyed");
 
 		Destroy(this.gameObject, 2);
+	}
+
+	public void DisableSprite()
+	{
+		sprite.gameObject.SetActive(false);
+	}
+	
+	public void GivePoints()
+	{
+		CharacterController.Player.points += points;
 	}
 }
