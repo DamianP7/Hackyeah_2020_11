@@ -15,7 +15,7 @@ public class Trash : MonoBehaviour
 	//public Tooltip tooltip;
 	public Animator animator;
 	public Transform sprite;
-	public TextMeshProUGUI text;
+	public GameObject coin;
 
 	[Space]
 	public int points;
@@ -61,7 +61,6 @@ public class Trash : MonoBehaviour
 	public void Destroyed()
 	{
 		animator.enabled = true;
-		text.text = "+" + points;
 		hittable = false;
 		animator.SetTrigger("Destroyed");
 
