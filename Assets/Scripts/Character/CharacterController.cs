@@ -5,9 +5,14 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
 	public LineRenderer lineRenderer;
+	public Material lineMaterial;
 	public Transform padPointer;
 	public Transform mousePointer;
 	public float maxPointerDistance;
+
+	public Gun[] guns;
+	public Gun selectedGun;
+	int gunIndex = 0;
 
 	[SerializeField] float speed = 1;
 
@@ -18,6 +23,7 @@ public class CharacterController : MonoBehaviour
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		SetWeapon(0);
 	}
 
 	private void Start()
@@ -72,17 +78,39 @@ public class CharacterController : MonoBehaviour
 		lineRenderer.enabled = false;
 	}
 
-	void MovePointer(Vector2 position, bool isMouse)
+	public void ChangeWeapon(int changeDirection)
 	{
-		padPointer.gameObject.SetActive(!isMouse);
-		mousePointer.gameObject.SetActive(isMouse);
-
-		if (isMouse)
-			currentPointer = mousePointer;
+		if (changeDirection < 0)
+		{
+			if (gunIndex > 0)
+				gunIndex--;
+			else
+				gunIndex = guns.Length - 1;
+		}
 		else
-			currentPointer = padPointer;
+		{
+			if (gunIndex < guns.Length - 1)
+				gunIndex++;
+			else
+				gunIndex = 0;
+		}
 
-		currentPointer.position = position;
+		SetWeapon(gunIndex);
 	}
 
+	public void SetWeapon(int index)
+	{
+		if (index < 0)
+			index = 0;
+		else if (index >= guns.Length)
+			index = guns.Length - 1;
+
+		selectedGun = guns[gunIndex];
+
+		lineMaterial.SetColor("Color_799E5E3C", selectedGun.color);
+		lineMaterial.SetFloat("Vector1_C8425888", selectedGun.width);
+		lineMaterial.SetFloat("Vector1_D61737C7", selectedGun.distortion);
+		lineMaterial.SetVector("Vector2_763B5D71", new Vector4(selectedGun.speed, selectedGun.frequency, 0, 0));
+		lineMaterial.SetFloat("Vector1_52AC407D", selectedGun.noiseScale);
+	}
 }

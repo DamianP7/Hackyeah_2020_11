@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class ControlManager : MonoBehaviour
 {
 	public CharacterController player;
-
+	public float minScroll = 10;
 
 	bool left, right, up, down;
 	bool gamepadInput;
@@ -31,7 +31,7 @@ public class ControlManager : MonoBehaviour
 			return;
 		else if (Gamepad.current != null && controls == Control.Controller)
 			HandleGamepad();
-		else if (controls == Control.PC)
+		else
 			HandlePC();
 	}
 
@@ -40,6 +40,9 @@ public class ControlManager : MonoBehaviour
 		var gamepad = Gamepad.current;
 		if (gamepad == null)
 			return; // No gamepad connected.
+
+		player.Aim(gamepad.rightStick.ReadValue());
+		player.Move(gamepad.leftStick.ReadValue());
 
 		if (gamepad.rightTrigger.wasPressedThisFrame)
 		{
@@ -51,20 +54,19 @@ public class ControlManager : MonoBehaviour
 		}
 		if (gamepad.rightShoulder.wasPressedThisFrame)
 		{
-			//player.NextWeapon();
+			player.ChangeWeapon(1);
 		}
 		if (gamepad.leftShoulder.wasPressedThisFrame)
 		{
-			//player.PreviousWeapon();
+			player.ChangeWeapon(-1);
 		}
 
-		player.Aim(gamepad.rightStick.ReadValue());
-
-		player.Move(gamepad.leftStick.ReadValue());
 	}
 
 	void HandlePC()
 	{
+		player.Aim(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()),true);
+
 		if (Mouse.current.leftButton.wasPressedThisFrame)
 		{
 			player.Shoot();
@@ -73,15 +75,26 @@ public class ControlManager : MonoBehaviour
 		{
 			player.StopShot();
 		}
-		//if (Mouse.current.scroll.)
-		//{
-		//	//player.NextWeapon();
-		//}
-		//if (gamepad.leftShoulder.wasPressedThisFrame)
-		//{
-		//	//player.PreviousWeapon();
-		//}
-		player.Aim(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()),true);
+		if (/*Mouse.current.scroll.ReadValue().x > minScroll || */Keyboard.current.eKey.wasPressedThisFrame)
+		{
+			player.ChangeWeapon(1);
+		}
+		if (/*Mouse.current.scroll.ReadValue().x < minScroll || */Keyboard.current.qKey.wasPressedThisFrame)
+		{
+			player.ChangeWeapon(-1);
+		}
+		if(Keyboard.current.digit1Key.wasPressedThisFrame)
+		{
+			player.SetWeapon(0);
+		}
+		if (Keyboard.current.digit2Key.wasPressedThisFrame)
+		{
+			player.SetWeapon(1);
+		}
+		if (Keyboard.current.digit3Key.wasPressedThisFrame)
+		{
+			player.SetWeapon(2);
+		}
 
 
 		if (Keyboard.current.leftArrowKey.wasPressedThisFrame || Keyboard.current.aKey.wasPressedThisFrame)
