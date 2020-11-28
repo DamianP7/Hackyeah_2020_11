@@ -5,8 +5,16 @@ using UnityEngine.InputSystem;
 
 public class ControlManager : MonoBehaviour
 {
+	public enum InputState
+	{
+		Game,
+		Loading
+	}
+
 	public CharacterController player;
 	public float minScroll = 10;
+
+	public InputState inputState = InputState.Game;
 
 	bool left, right, up, down;
 	bool gamepadInput;
@@ -27,12 +35,26 @@ public class ControlManager : MonoBehaviour
 
 	void Update()
 	{
-		if (controls == Control.Mobile)
-			return;
-		else if (Gamepad.current != null && controls == Control.Controller)
-			HandleGamepad();
-		else
-			HandlePC();
+		switch (inputState)
+		{
+			case InputState.Game:
+				if (controls == Control.Mobile)
+					return;
+				else if (Gamepad.current != null && controls == Control.Controller)
+					HandleGamepad();
+				else
+					HandlePC();
+
+				if (Mouse.current.rightButton.wasPressedThisFrame)
+				{
+					LoadingScreen.Instance.LoadScene("SampleScene");
+				}
+				break;
+			case InputState.Loading:
+				if (Keyboard.current.anyKey.wasPressedThisFrame)
+					LoadingScreen.Instance.OnClickContinue();
+				break;
+		}
 	}
 
 	void HandleGamepad()

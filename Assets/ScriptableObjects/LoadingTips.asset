@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a27bfabf79ac024489cf4ab9361aaeb, type: 3}
   m_Name: LoadingTips
   m_EditorClassIdentifier: 
-  loadingTips: []
+  loadingTips:
+  - "Z 35 plastikowych butelek mo\u017Cna wyprodukowa\u0107 bluz\u0119 z polaru."
+  - "W Polsce marnuje si\u0119 blisko 9 mln ton jedzenia rocznie."
+  - "Jedna plastikowa butelka rozk\u0142ada si\u0119 ok. 500 lat, a aluminiowa puszka
+    od 200 do 400 lat."
+  - "Puszki aluminiowe mo\u017Cna poddawa\u0107 recyklingowi niesko\u0144czona ilo\u015B\u0107
+    razy. Przetworzenie tony aluminium to oszcz\u0119dno\u015B\u0107 4 tony rudy
+    i 700 kilogram\xF3w ropy naftowej. "
+  - "Opakowania szklane mo\u017Cna przetwarza\u0107 niesko\u0144czon\u0105 ilo\u015B\u0107
+    razy. Ponowne wykorzystanie jednej szklanej butelki to oszcz\u0119dno\u015B\u0107
+    1100 W energii, kt\xF3rej potrzeba do wyprodukowania nowej."
+  - "Niemal ca\u0142y samoch\xF3d (80 - 95%) przeznaczony do z\u0142omowania nadaje
+    sie do recyklingu."
+  - "Styropianowa tacka rozk\u0142ada si\u0119 500 lat. Je\u015Bli kupujesz obiad
+    na wynos, we\u017A ze sob\u0105 opakowanie wielorazowego u\u017Cytku."
+  - "Jedna bateria z zegarka elektronicznego mo\u017Ce zatru\u0107 a\u017C 400 litr\xF3w
+    wody. Nie wyrzucaj baterii do kosza. "
+  - "Foliowa torba rozk\u0142ada si\u0119 ok. 300 lat. Na zakupy zawsze zabieraj
+    w\u0142asn\u0105 torb\u0119 wielokrotnego u\u017Cytku."
+  - "Karton po mleku ma warto\u015B\u0107 energetyczn\u0105, kt\xF3ra pozwala zasila\u0107
+    \u017Car\xF3wke o mocy 40 Watt przez 1.5 godziny"
