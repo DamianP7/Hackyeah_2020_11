@@ -52,7 +52,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170217348719645429}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 8751764202589485213}
   - component: {fileID: 6029101307374485834}
   m_Layer: 5
-  m_Name: Text
+  m_Name: InfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,7 +582,7 @@ MonoBehaviour:
   nextInputState: 0
   animator: {fileID: 4673933566414781562}
   loadingTips: {fileID: 11400000, guid: 9547766d541f54d44849a7bfbe33925b, type: 2}
-  tipText: {fileID: 6029101307374485834}
+  tipText: {fileID: 3506009042408681723}
   textsGroup: {fileID: 751918530469289997}
   background: {fileID: 7572152011425396607}
   alphaChange: 1

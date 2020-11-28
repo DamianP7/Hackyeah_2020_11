@@ -15,6 +15,52 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
+	enum Direction
+	{
+		Left,
+		Right,
+		Up,
+		Down,
+	}
+
+	[Header("Body")]
+	[SerializeField] Animator leftDirection;
+	[SerializeField] Animator rightDirection;
+	[SerializeField] Transform beamPointLeft;
+	[SerializeField] Transform beamPointRight;
+	Animator animator;
+	Transform beamPoint;
+	Direction direction;
+	Direction curDirection
+	{
+		get => direction;
+		set
+		{
+			switch (value)
+			{
+				case Direction.Left:
+					leftDirection.gameObject.SetActive(true);
+					rightDirection.gameObject.SetActive(false);
+					animator = leftDirection;
+					beamPoint = beamPointLeft;
+					break;
+				case Direction.Right:
+					leftDirection.gameObject.SetActive(false);
+					rightDirection.gameObject.SetActive(true);
+					animator = rightDirection;
+					beamPoint = beamPointRight;
+					break;
+				case Direction.Up:
+					break;
+				case Direction.Down:
+					break;
+			}
+			direction = value;
+		}
+	}
+
+	[SerializeField] float timeToIdleAnimation;
+	float idleTimer;
 
 	[Header("Pointer")]
 	public LineRenderer lineRenderer;
@@ -47,6 +93,7 @@ public class CharacterController : MonoBehaviour
 	int hp = 100;
 	Rigidbody2D rb;
 	Transform currentPointer;
+	bool moved = false;
 
 	private void Awake()
 	{
@@ -58,6 +105,7 @@ public class CharacterController : MonoBehaviour
 	{
 		lineRenderer.enabled = false;
 		Points = 0;
+		curDirection = Direction.Right;
 	}
 
 	public void Aim(Vector2 direction, bool isMouse = false)
@@ -82,7 +130,7 @@ public class CharacterController : MonoBehaviour
 
 		}
 
-		lineRenderer.SetPositions(new Vector3[2] { transform.position, currentPointer.position });
+		lineRenderer.SetPositions(new Vector3[2] { beamPoint.position, currentPointer.position });
 		//float dis = Vector3.Distance(pointer.localPosition, direction);
 
 
@@ -91,16 +139,29 @@ public class CharacterController : MonoBehaviour
 
 	public void Move(Vector2 direction)
 	{
+		if(direction.x > 0)
+		{
+			if (curDirection != Direction.Right)
+				curDirection = Direction.Right;
+		}
+		else if (direction.x < 0)
+		{
+			if (curDirection != Direction.Left)
+				curDirection = Direction.Left;
+		}
+
 		Vector3 pos = new Vector3(direction.x * speed, direction.y * speed) + rb.transform.position;
 		rb.MovePosition(pos);
+		if (!moved)
+			animator.SetTrigger("Walking");
+		moved = true;
 	}
 
 	public void Shoot()
 	{
 		shooting = true;
 		lineRenderer.enabled = true;
-		lineRenderer.SetPosition(1, currentPointer.position);
-		lineRenderer.SetPositions(new Vector3[2] { transform.position, currentPointer.localPosition });
+		lineRenderer.SetPositions(new Vector3[2] { beamPoint.position, currentPointer.localPosition });
 	}
 
 	public void StopShot()
@@ -143,5 +204,20 @@ public class CharacterController : MonoBehaviour
 		lineMaterial.SetFloat("Vector1_D61737C7", selectedGun.distortion);
 		lineMaterial.SetVector("Vector2_763B5D71", new Vector4(selectedGun.speed, selectedGun.frequency, 0, 0));
 		lineMaterial.SetFloat("Vector1_52AC407D", selectedGun.noiseScale);
+	}
+
+	private void LateUpdate()
+	{
+		if(moved)
+		{
+			idleTimer = 0;
+			moved = false;
+		}
+		else
+		{
+			idleTimer += Time.deltaTime;
+			if (idleTimer > timeToIdleAnimation)
+				animator.SetTrigger("Idle");
+		}
 	}
 }
