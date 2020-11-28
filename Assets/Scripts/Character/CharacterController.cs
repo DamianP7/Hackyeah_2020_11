@@ -12,6 +12,8 @@ public class CharacterController : MonoBehaviour
 
 	public Gun[] guns;
 	public Gun selectedGun;
+	[HideInInspector]
+	public bool shooting = false;
 	int gunIndex = 0;
 
 	[SerializeField] float speed = 1;
@@ -68,6 +70,7 @@ public class CharacterController : MonoBehaviour
 
 	public void Shoot()
 	{
+		shooting = true;
 		lineRenderer.enabled = true;
 		lineRenderer.SetPosition(1, currentPointer.position);
 		lineRenderer.SetPositions(new Vector3[2] { transform.position, currentPointer.localPosition });
@@ -75,6 +78,7 @@ public class CharacterController : MonoBehaviour
 
 	public void StopShot()
 	{
+		shooting = false;
 		lineRenderer.enabled = false;
 	}
 

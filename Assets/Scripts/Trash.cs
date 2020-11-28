@@ -33,7 +33,7 @@ public class Trash : MonoBehaviour
 
 	public void Hitted(TrashType beamType, float force)
 	{
-		if (hittable)
+		if (!hittable)
 			return;
 
 		if (beamType != trashType)
@@ -43,6 +43,7 @@ public class Trash : MonoBehaviour
 		}
 
 		float totalForce = force * (1 - hardness) * Time.deltaTime;
+		Debug.Log(totalForce);
 		sprite.localScale *= 1 - totalForce;
 
 		if (sprite.localScale.x < minScale)
@@ -54,6 +55,6 @@ public class Trash : MonoBehaviour
 		hittable = false;
 		//animator
 
-		Destroy(this, 3);
+		Destroy(this.gameObject, 2);
 	}
 }
