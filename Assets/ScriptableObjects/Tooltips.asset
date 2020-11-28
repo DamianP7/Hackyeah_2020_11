@@ -15,4 +15,11 @@ MonoBehaviour:
   tooltips:
   - trashName: Bottle
     tooltip: "Szklane butelki wyrzucamy do pojemnik\xF3w oznaczonych 'Szk\u0142o'"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: b224798d1b6686048b10d9e49c7ca0b1, type: 3}
+  - trashName: Paper
+    tooltip: "Papier i gazety wrzucamy do pojemnik\xF3w oznaczonych 'Papier'"
+    image: {fileID: 21300000, guid: 2811d0bcceb864445a348adb177ed8b8, type: 3}
+  - trashName: Can
+    tooltip: "Metalowe i plastikowe \u015Bmieci wyrzucamy do 'Metali i tworzyw sztucznych',
+      lub konkretnych pojemnik\xF3w"
+    image: {fileID: 21300000, guid: 7d17fb5d9b7e21c4497d489154ca7ba8, type: 3}

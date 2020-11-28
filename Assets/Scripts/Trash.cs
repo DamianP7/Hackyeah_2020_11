@@ -36,6 +36,7 @@ public class Trash : MonoBehaviour
 		wrongHitTimer = 0;
 		hittable = true;
 		animator.enabled = false;
+		sprite.Rotate(Vector3.forward, Random.Range(-90, 90));
 	}
 
 	public void Hitted(TrashType beamType, float force)
