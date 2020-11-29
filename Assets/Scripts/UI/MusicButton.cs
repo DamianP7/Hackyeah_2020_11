@@ -11,13 +11,13 @@ public class MusicButton : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Music",1) > 0)
         {
-            // music on
+            AudioManager.Instance.TurnMusic(true);
             disabled.SetActive(false);
             musicEnabled = true;
         }
         else
         {
-            // music off
+            AudioManager.Instance.TurnMusic(false);
             disabled.SetActive(true);
             musicEnabled = false;
         }
@@ -26,8 +26,9 @@ public class MusicButton : MonoBehaviour
     public void OnButtonClick()
     {
         musicEnabled = !musicEnabled;
-        // change music state
 
+        disabled.SetActive(!musicEnabled);
+        AudioManager.Instance.TurnMusic(musicEnabled);
         PlayerPrefs.SetInt("Music", musicEnabled ? 1 : 0);
     }
 }

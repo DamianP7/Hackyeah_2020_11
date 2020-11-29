@@ -48,6 +48,7 @@ public class LoadingScreen : MonoBehaviour
 		{
 			canvasGroupsToHide[i].alpha = 1;
 		}
+		textsGroup.blocksRaycasts = false;
 	}
 
 	public void LoadScene(string name)
@@ -74,7 +75,13 @@ public class LoadingScreen : MonoBehaviour
 			return;
 
 		showTexts = false;
+		textsGroup.blocksRaycasts = false;
 		StartCoroutine(WaitForOpen());
+	}
+
+	public void ExitApp()
+	{
+		Application.Quit();
 	}
 
 	private void Update()
@@ -82,18 +89,19 @@ public class LoadingScreen : MonoBehaviour
 		if (showTexts)
 		{
 			if (textsGroup.alpha < 1)
-				textsGroup.alpha += alphaChange * Time.deltaTime;
+				textsGroup.alpha += alphaChange * Time.deltaTime / 2;
 		}
 		else
 		{
 			if (textsGroup.alpha > 0)
-				textsGroup.alpha -= alphaChange * Time.deltaTime;
+				textsGroup.alpha -= alphaChange * Time.deltaTime * 2;
 		}
 	}
 
 	IEnumerator WaitForLoad()
 	{
 		showTexts = true;
+		textsGroup.blocksRaycasts = true;
 		while (async.progress < 0.9f)
 		{
 			yield return null;

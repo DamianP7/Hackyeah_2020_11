@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8560ac8617832d942ba8af5b093b55eb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cooper Black
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b1848a22c154bc14d995b839ed8656ec, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

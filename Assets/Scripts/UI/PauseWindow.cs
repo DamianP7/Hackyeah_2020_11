@@ -16,16 +16,18 @@ public class PauseWindow : MonoBehaviour
 	}
 
 	public CanvasGroup canvasGroup;
-
+	public ControlManager controlManager;
 
 	public void Open()
 	{
+		controlManager.inputState = ControlManager.InputState.Pause;
 		Time.timeScale = 0;
 		canvasGroup.alpha = 1;
 	}
 
 	public void Close()
 	{
+		controlManager.inputState = ControlManager.InputState.Game;
 		Time.timeScale = 1;
 		canvasGroup.alpha = 0;
 	}

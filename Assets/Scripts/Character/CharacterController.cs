@@ -60,6 +60,7 @@ public class CharacterController : MonoBehaviour
 	}
 
 	[SerializeField] float timeToIdleAnimation;
+	public AudioSource weaponAudio;
 	float idleTimer;
 	string currentAnim = "";
 
@@ -173,12 +174,14 @@ public class CharacterController : MonoBehaviour
 		shooting = true;
 		lineRenderer.enabled = true;
 		lineRenderer.SetPositions(new Vector3[2] { beamPoint.position, currentPointer.localPosition });
+		weaponAudio.Play();
 	}
 
 	public void StopShot()
 	{
 		shooting = false;
 		lineRenderer.enabled = false;
+		weaponAudio.Stop();
 	}
 
 	public void ChangeWeapon(int changeDirection)

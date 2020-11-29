@@ -217,7 +217,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8560ac8617832d942ba8af5b093b55eb, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 2320507027483705209}
   - component: {fileID: 2320507027483705208}
   - component: {fileID: 2320507027483705159}
+  - component: {fileID: 8658064238778648716}
   m_Layer: 5
   m_Name: GameCanvas
   m_TagString: Untagged
@@ -331,6 +332,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &8658064238778648716
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2320507027483705158}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2320507027485117308
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +534,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8560ac8617832d942ba8af5b093b55eb, type: 3}
     m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
@@ -637,7 +650,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8560ac8617832d942ba8af5b093b55eb, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -1002,7 +1015,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b1848a22c154bc14d995b839ed8656ec, type: 3}
+    m_Font: {fileID: 12800000, guid: 8560ac8617832d942ba8af5b093b55eb, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -1288,7 +1301,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b1848a22c154bc14d995b839ed8656ec, type: 3}
+    m_Font: {fileID: 12800000, guid: 8560ac8617832d942ba8af5b093b55eb, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -1872,6 +1885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 3595828627735465479}
+  controlManager: {fileID: 0}
 --- !u!1 &8330089897468537204
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2120,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b1848a22c154bc14d995b839ed8656ec, type: 3}
+    m_Font: {fileID: 12800000, guid: 8560ac8617832d942ba8af5b093b55eb, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1

@@ -11,13 +11,13 @@ public class SoundButton : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Sound",1) > 0)
         {
-            // music on
+            AudioManager.Instance.TurnSounds(true);
             disabled.SetActive(false);
             soundEnabled = true;
         }
         else
         {
-            // music off
+            AudioManager.Instance.TurnSounds(false);
             disabled.SetActive(true);
             soundEnabled = false;
         }
@@ -26,8 +26,9 @@ public class SoundButton : MonoBehaviour
     public void OnButtonClick()
     {
         soundEnabled = !soundEnabled;
-        // change music state
 
+        disabled.SetActive(!soundEnabled);
+        AudioManager.Instance.TurnSounds(soundEnabled);
         PlayerPrefs.SetInt("Sound", soundEnabled ? 1 : 0);
     }
 }
