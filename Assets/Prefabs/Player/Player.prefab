@@ -648,10 +648,10 @@ MonoBehaviour:
   - beamType: 0
     force: 1
     width: 0.2
-    distortion: 25
-    speed: 0.8
+    distortion: 65
+    speed: 0.6
     frequency: 0.5
-    noiseScale: 0.2
+    noiseScale: 0.15
     color: {r: 0, g: 0.68235296, b: 0.93725497, a: 1}
   - beamType: 1
     force: 1
@@ -664,10 +664,10 @@ MonoBehaviour:
   - beamType: 2
     force: 1
     width: 0.2
-    distortion: 25
-    speed: 0.8
+    distortion: 60
+    speed: 1.5
     frequency: 0.5
-    noiseScale: 0.2
+    noiseScale: 0.3
     color: {r: 0.97647065, g: 0.77647066, b: 0.023529414, a: 1}
   selectedGun:
     beamType: 0

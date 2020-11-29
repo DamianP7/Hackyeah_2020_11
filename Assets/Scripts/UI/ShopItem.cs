@@ -12,6 +12,7 @@ public class ShopItem : MonoBehaviour
 
 	public Sprite empty, full;
 	public string itemName;
+	public Text money;
 	int level;
 
 	private void Start()
@@ -30,6 +31,7 @@ public class ShopItem : MonoBehaviour
 			else
 				levels[i].sprite = empty;
 		}
+		money.text = PlayerPrefs.GetInt("Coins", 0).ToString();
 	}
 
 	public void OnLevelUpClicked()

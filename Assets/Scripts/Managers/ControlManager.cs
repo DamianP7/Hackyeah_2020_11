@@ -37,6 +37,13 @@ public class ControlManager : MonoBehaviour
 
 	void Update()
 	{
+#if UNITY_EDITOR
+		if (Keyboard.current.rKey.wasPressedThisFrame)
+		{
+			ScreenCapture.CaptureScreenshot(Application.dataPath + "/~Screenshots/" + System.DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".png");
+			UnityEditor.AssetDatabase.Refresh();
+		}
+#endif
 		switch (inputState)
 		{
 			case InputState.Game:
@@ -119,7 +126,7 @@ public class ControlManager : MonoBehaviour
 		{
 			player.SetWeapon(2);
 		}
-		if(Keyboard.current.escapeKey.wasPressedThisFrame)
+		if (Keyboard.current.escapeKey.wasPressedThisFrame)
 		{
 			PauseWindow.Instance.Open();
 		}
