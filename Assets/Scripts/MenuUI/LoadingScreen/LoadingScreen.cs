@@ -50,6 +50,23 @@ public class LoadingScreen : MonoBehaviour
 		}
 		textsGroup.blocksRaycasts = false;
 	}
+	public void LoadScene(int index)
+	{
+		if (async != null)
+			return;
+
+		controlManager.inputState = ControlManager.InputState.Loading;
+		animator.SetTrigger("FadeIn");
+		async = SceneManager.LoadSceneAsync(index);
+		async.allowSceneActivation = false;
+
+		for (int i = 0; i < canvasGroupsToHide.Length; i++)
+		{
+			canvasGroupsToHide[i].alpha = 0;
+		}
+
+		StartCoroutine(WaitForLoad());
+	}
 
 	public void LoadScene(string name)
 	{

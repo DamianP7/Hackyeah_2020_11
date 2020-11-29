@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MapButton : MonoBehaviour
 {
-	public string worldName;
+	public int sceneIndex;
 
 	public void OnClickPlanet()
 	{
-		LoadingScreen.Instance.LoadScene(worldName);
+		PlayerPrefs.SetInt("LastLevel", sceneIndex - 1);
+		LoadingScreen.Instance.LoadScene(sceneIndex);
 	}
 }

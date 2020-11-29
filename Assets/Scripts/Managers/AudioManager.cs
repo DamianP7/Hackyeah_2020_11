@@ -19,15 +19,25 @@ public class AudioManager : MonoBehaviour
 	public AudioSource musicSource;
 	public AudioSource soundSource;
 
+	public bool selfCheck = false;
+
 	private void Start()
 	{
+		if(selfCheck)
+		{
+			if (PlayerPrefs.GetInt("Music", 1) > 0)
+			{
+				musicSource.volume = 1;
+				soundSource.volume = 1;
+			}
+			else
+			{
+				musicSource.volume = 0;
+				soundSource.volume = 0;
+			}
+		}	
 		musicSource.clip = music;
 		musicSource.Play();
-	}
-
-	public void Refresh()
-	{
-
 	}
 
 	public void TurnMusic(bool enabled)
@@ -39,5 +49,11 @@ public class AudioManager : MonoBehaviour
 	{
 		soundSource.volume = enabled ? 1 : 0;
 		CharacterController.Player.weaponAudio.volume = enabled ? 1 : 0;
+	}
+
+	public void PlaySound(AudioClip audioClip)
+	{
+		soundSource.clip = audioClip;
+		soundSource.Play();
 	}
 }
