@@ -16373,7 +16373,7 @@ PrefabInstance:
     - target: {fileID: 1459288737198558220, guid: 43c633d69cdbd9f4fa050a2a79b043ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1459288737198558220, guid: 43c633d69cdbd9f4fa050a2a79b043ef,
         type: 3}
@@ -16447,7 +16447,7 @@ PrefabInstance:
     - target: {fileID: 7145741360738836319, guid: 57a256ef883cbeb42b06ba2bd9cce219,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7145741360738836319, guid: 57a256ef883cbeb42b06ba2bd9cce219,
         type: 3}
@@ -16593,6 +16593,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2101041818369005198, guid: 6d27fbd5e4b399044a13990121759d68,
+        type: 3}
+      propertyPath: maxMusicVolume
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d27fbd5e4b399044a13990121759d68, type: 3}
 --- !u!1001 &2320507027559284888
@@ -16620,7 +16625,7 @@ PrefabInstance:
     - target: {fileID: 2320507027483705210, guid: 3b58a10053ac42d49bd00ca15552b6e6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2320507027483705210, guid: 3b58a10053ac42d49bd00ca15552b6e6,
         type: 3}
@@ -16849,7 +16854,7 @@ PrefabInstance:
     - target: {fileID: 7389877502946570712, guid: 87f2955f66c0a3d4897204f3ff534e2d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7389877502946570712, guid: 87f2955f66c0a3d4897204f3ff534e2d,
         type: 3}

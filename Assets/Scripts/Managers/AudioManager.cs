@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
 	public AudioSource soundSource;
 
 	public bool selfCheck = false;
+	public float maxMusicVolume = 1;
 
 	private void Start()
 	{
@@ -27,7 +28,7 @@ public class AudioManager : MonoBehaviour
 		{
 			if (PlayerPrefs.GetInt("Music", 1) > 0)
 			{
-				musicSource.volume = 1;
+				musicSource.volume = maxMusicVolume;
 				soundSource.volume = 1;
 			}
 			else
@@ -42,7 +43,7 @@ public class AudioManager : MonoBehaviour
 
 	public void TurnMusic(bool enabled)
 	{
-		musicSource.volume = enabled ? 1 : 0;
+		musicSource.volume = enabled ? maxMusicVolume : 0;
 	}
 
 	public void TurnSounds(bool enabled)
